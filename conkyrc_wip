@@ -61,13 +61,13 @@ conky.config = {
 
 conky.text = [[
 
-	$alignc${image ~/.conky/img/logo-kubuntu.png -p 45,0 90x90}
+	$alignc${image ~/.conky/img/logo-kubuntu.png -p 40,0 80x80}
 	${goto 10}${voffset 50}${font}${color}$kernel on $machine
 	${goto 10}${exec cat /etc/issue.net}
 	${goto 10}CPU: ${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-27}
 	${goto 10}CPU Speed: ${freq_g 1}${goto 110}GHz
 	${goto 5}${color2}${hr 2}
-	${color}${goto 10}GPU1:${goto 65}${color5}${exec nvidia-settings -t -q [gpu:0]/GPUCoreTemp} °C ${color} ${goto 125}GPU2:${goto 180}${color}${exec nvidia-settings -t -q [gpu:1]/GPUCoreTemp} °C
+	${color}${goto 10}GPU1:${goto 65}${color5}${exec nvidia-settings -t -q [gpu:0]/GPUCoreTemp} °C ${color}
 	${goto 10}${color}CPU0:${goto 65}${color5}${execi 30 sensors|grep 'Core 0'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C ${goto 125}${color}CPU1:${goto 180}${color5}${execi 30 sensors|grep 'Core 1'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C
 	${goto 10}${color}CPU2:${goto 65}${color5}${execi 30 sensors|grep 'Core 2'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C ${goto 125}${color}CPU3:${goto 180}${color5}${execi 30 sensors|grep 'Core 3'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C ${color2}
 	${goto 10}${color}CPU4:${goto 65}${color5}${execi 30 sensors|grep 'Core 4'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C ${goto 125}${color}CPU5:${goto 180}${color5}${execi 30 sensors|grep 'Core 5'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C ${color2}
@@ -95,14 +95,14 @@ conky.text = [[
 	${goto 10}${font Fira Sans:bold:size=12}${color}Memory:
 	${goto 10}${font}${color}RAM${goto 55}$mem
 	${goto 10}System Ram:${goto 110}$memperc%  of${goto 160}$memmax
-	${goto 10}${top_mem name 1}${goto 135}${top_mem pid 1}${goto 175}${top_mem mem 1}%
-	${goto 10}${top_mem name 2}${goto 135}${top_mem pid 2}${goto 175}${top_mem mem 2}%
-	${goto 10}${top_mem name 3}${goto 135}${top_mem pid 3}${goto 175}${top_mem mem 3}%
-	${goto 10}${top_mem name 4}${goto 135}${top_mem pid 4}${goto 175}${top_mem mem 4}%
-	${goto 10}${top_mem name 5}${goto 135}${top_mem pid 5}${goto 175}${top_mem mem 5}%
-	${goto 10}${top_mem name 6}${goto 135}${top_mem pid 6}${goto 175}${top_mem mem 6}%
-	${goto 10}${top_mem name 7}${goto 135}${top_mem pid 7}${goto 175}${top_mem mem 7}%
-	${goto 10}${top_mem name 8}${goto 135}${top_mem pid 8}${goto 175}${top_mem mem 8}%
+	${goto 20}${top_mem name 1}${goto 130}${top_mem pid 1}${goto 175}${top_mem mem 1}%
+	${goto 20}${top_mem name 2}${goto 130}${top_mem pid 2}${goto 175}${top_mem mem 2}%
+	${goto 20}${top_mem name 3}${goto 130}${top_mem pid 3}${goto 175}${top_mem mem 3}%
+	${goto 20}${top_mem name 4}${goto 130}${top_mem pid 4}${goto 175}${top_mem mem 4}%
+	${goto 20}${top_mem name 5}${goto 130}${top_mem pid 5}${goto 175}${top_mem mem 5}%
+	${goto 20}${top_mem name 6}${goto 130}${top_mem pid 6}${goto 175}${top_mem mem 6}%
+	${goto 20}${top_mem name 7}${goto 130}${top_mem pid 7}${goto 175}${top_mem mem 7}%
+	${goto 20}${top_mem name 8}${goto 130}${top_mem pid 8}${goto 175}${top_mem mem 8}%
 	${goto 5}${color2}${hr 2}
 	${goto 10}${font Fira Sans:bold:size=12}${color}Disks:
 	${goto 10}${font}${color}Home ${goto 56}${fs_used /home}
@@ -110,14 +110,20 @@ conky.text = [[
 	${goto 10}Data ${goto 58}${fs_used /media/local-data-2}
 	${goto 10}Data-E ${goto 58}${fs_used /media/data-e}
 	${goto 10}Data-F ${goto 58}${fs_used /media/data-f}
+	${goto 10}NAS-1 ${goto 58}${fs_used /media/nas-1}
 	${goto 5}${color2}${hr 2}
 	${goto 10}${font Fira Sans:bold:size=12}${color}Network:
 	${goto 10}${color}${font}Public:${goto 65}${execi 3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}
-	${goto 10}Lan:${goto 65}${addr eno1}
-	${goto 10}Down:${goto 65}${downspeed eno1}
-	${goto 10}Up:${goto 65}${upspeed eno1}
+	${goto 10}Lan 1:${goto 65}${addr eno1}
+	${goto 10}Down:${goto 65}${downspeedf eno1}
+	${goto 10}Up:${goto 65}${upspeedf eno1}
 	${goto 10}Total Down:${goto 95}${totaldown eno1}
 	${goto 10}Total Up:${goto 95}${totalup eno1}
+	${goto 10}Lan 2:${goto 65}${addr enp5s0}
+	${goto 10}Down:${goto 65}${downspeedf enp5s0}
+	${goto 10}Up:${goto 65}${upspeedf enp5s0}
+	${goto 10}Total Down:${goto 95}${totaldown enp5s0}
+	${goto 10}Total Up:${goto 95}${totalup enp5s0}
 	${goto 5}${color2}${hr 2}
 	${goto 10}${font Fira Sans:bold:size=12}${color}Ports:
 	${goto 10}${font}Inbound Ports:${goto 125}${tcp_portmon 1 32767 count}
