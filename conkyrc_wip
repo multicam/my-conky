@@ -61,7 +61,7 @@ conky.config = {
 
 conky.text = [[
 
-	$alignc${image ~/.conky/img/logo-kubuntu.png -p 40,0 80x80}
+	${image ~/.conky/img/logo-kubuntu2.png -p 0,0 -s 60x60}
 	${goto 10}${voffset 50}${font}${color}$kernel on $machine
 	${goto 10}${exec cat /etc/issue.net}
 	${goto 10}CPU: ${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-27}
@@ -88,6 +88,9 @@ conky.text = [[
 	${goto 10}${top name 3}${goto 135}${top pid 3}${goto 175}${top cpu 3}%
 	${goto 10}${top name 4}${goto 135}${top pid 4}${goto 175}${top cpu 4}%
 	${goto 10}${top name 5}${goto 135}${top pid 5}${goto 175}${top cpu 5}%
+	${goto 10}${top name 6}${goto 135}${top pid 6}${goto 175}${top cpu 6}%
+	${goto 10}${top name 7}${goto 135}${top pid 7}${goto 175}${top cpu 7}%
+	${goto 10}${top name 8}${goto 135}${top pid 8}${goto 175}${top cpu 8}%
 	${goto 5}${color2}${hr 2}
 	${goto 10}$processes${goto 55}Total Processes
 	${goto 10}$running_threads${goto 55}Running Threads
@@ -111,19 +114,15 @@ conky.text = [[
 	${goto 10}Data-E ${goto 58}${fs_used /media/data-e}
 	${goto 10}Data-F ${goto 58}${fs_used /media/data-f}
 	${goto 10}NAS-1 ${goto 58}${fs_used /media/nas-1}
+	${goto 10}NAS-2 ${goto 58}${fs_used /media/nas-2}
 	${goto 5}${color2}${hr 2}
 	${goto 10}${font Fira Sans:bold:size=12}${color}Network:
 	${goto 10}${color}${font}Public:${goto 65}${execi 3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}
-	${goto 10}Lan 1:${goto 65}${addr eno1}
+	${goto 10}Lan:${goto 65}${addr eno1}
 	${goto 10}Down:${goto 65}${downspeedf eno1}
 	${goto 10}Up:${goto 65}${upspeedf eno1}
 	${goto 10}Total Down:${goto 95}${totaldown eno1}
 	${goto 10}Total Up:${goto 95}${totalup eno1}
-	${goto 10}Lan 2:${goto 65}${addr enp5s0}
-	${goto 10}Down:${goto 65}${downspeedf enp5s0}
-	${goto 10}Up:${goto 65}${upspeedf enp5s0}
-	${goto 10}Total Down:${goto 95}${totaldown enp5s0}
-	${goto 10}Total Up:${goto 95}${totalup enp5s0}
 	${goto 5}${color2}${hr 2}
 	${goto 10}${font Fira Sans:bold:size=12}${color}Ports:
 	${goto 10}${font}Inbound Ports:${goto 125}${tcp_portmon 1 32767 count}
@@ -136,5 +135,6 @@ conky.text = [[
 	${goto 30}${tcp_portmon 1 65535 rip  5}
 	${goto 30}${tcp_portmon 1 65535 rip  6}
 	${goto 30}${tcp_portmon 1 65535 rip  7}
+	${goto 30}${tcp_portmon 1 65535 rip  8}
 
 ]];
