@@ -118,23 +118,22 @@ conky.text = [[
 	${goto 5}${color2}${hr 2}
 	${goto 10}${font Fira Sans:bold:size=12}${color}Network:
 	${goto 10}${color}${font}Public:${goto 65}${execi 3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}
-	${goto 10}Lan:${goto 65}${addr eno1}
-	${goto 10}Down:${goto 65}${downspeedf eno1}
-	${goto 10}Up:${goto 65}${upspeedf eno1}
-	${goto 10}Total Down:${goto 95}${totaldown eno1}
-	${goto 10}Total Up:${goto 95}${totalup eno1}
+	${goto 10}Lan:${goto 65}${addr bond0}
+	${goto 10}Down:${goto 65}${downspeedf bond0}
+	${goto 10}Up:${goto 65}${upspeedf bond0}
+	${goto 10}Total Down:${goto 95}${totaldown bond0}
+	${goto 10}Total Up:${goto 95}${totalup bond0}
 	${goto 5}${color2}${hr 2}
 	${goto 10}${font Fira Sans:bold:size=12}${color}Ports:
 	${goto 10}${font}Inbound Ports:${goto 125}${tcp_portmon 1 32767 count}
 	${goto 10}Outbound Ports:${goto 125}${tcp_portmon 32768 61000 count}
-	${goto 10}IP: ${tcp_portmon 1 65535 rip  0}
-	${goto 30}${tcp_portmon 1 65535 rip  1}
-	${goto 30}${tcp_portmon 1 65535 rip  2}
-	${goto 30}${tcp_portmon 1 65535 rip  3}
-	${goto 30}${tcp_portmon 1 65535 rip  4}
-	${goto 30}${tcp_portmon 1 65535 rip  5}
-	${goto 30}${tcp_portmon 1 65535 rip  6}
-	${goto 30}${tcp_portmon 1 65535 rip  7}
-	${goto 30}${tcp_portmon 1 65535 rip  8}
+	${goto 10}IP: ${goto 50}${tcp_portmon 1 65535 rip  0}
+	${goto 50}${tcp_portmon 1 65535 rip  1}
+	${goto 50}${tcp_portmon 1 65535 rip  2}
+	${goto 50}${tcp_portmon 1 65535 rip  3}
+	${goto 50}${tcp_portmon 1 65535 rip  4}
+	${goto 50}${tcp_portmon 1 65535 rip  5}
+	${goto 50}${tcp_portmon 1 65535 rip  6}
+	${goto 50}${tcp_portmon 1 65535 rip  7}
 
 ]];
