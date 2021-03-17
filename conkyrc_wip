@@ -2,13 +2,13 @@ conky.config = {
 
 	xinerama_head = 2,
 
-	cpu_avg_samples = 3,
-	net_avg_samples = 3,
+	cpu_avg_samples = 5,
+	net_avg_samples = 5,
 	temperature_unit = 'celsius',
 
 	double_buffer = true,
 	text_buffer_size = 2048,
-	update_interval = 0.5,
+	update_interval = 0.25,
 	total_run_times = 0,
 
 	gap_x = 0,
@@ -64,6 +64,7 @@ conky.text = [[
 	${image ~/.conky/img/logo-kubuntu2.png -p 0,0 -s 60x60}
 	${goto 10}${voffset 50}${font}${color}$kernel on $machine
 	${goto 10}${exec cat /etc/issue.net}
+	${goto 10}${exec plasmashell --version}
 	${goto 10}CPU: ${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-27}
 	${goto 10}CPU Speed: ${freq_g 1}${goto 110}GHz
 	${goto 5}${color2}${hr 2}
