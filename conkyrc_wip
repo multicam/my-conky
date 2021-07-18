@@ -2,20 +2,20 @@ conky.config = {
 
 	xinerama_head = 2,
 
-	cpu_avg_samples = 5,
-	net_avg_samples = 5,
+	cpu_avg_samples = 3,
+	net_avg_samples = 3,
 	temperature_unit = 'celsius',
 
 	double_buffer = true,
 	text_buffer_size = 2048,
-	update_interval = 0.25,
+	update_interval = 0.5,
 	total_run_times = 0,
 
 	gap_x = 0,
-	gap_y = 45,
+	gap_y = 20,
 
 	minimum_width = 230,
-	minimum_height = 1200,
+	minimum_height = 1600,
 
 	own_window = true,
 	own_window_transparent = true,
@@ -29,9 +29,9 @@ conky.config = {
 	alignment = 'top_right',
 
 -- Misc Console #
-	  out_to_console = false,
-	  out_to_stderr = false,
-	  extra_newline = false,
+  out_to_console = false,
+  out_to_stderr = false,
+  extra_newline = false,
 
 	draw_shades = false,
 	draw_outline = false,
@@ -62,7 +62,7 @@ conky.config = {
 conky.text = [[
 
 	${image ~/.conky/img/logo-kubuntu2.png -p 0,0 -s 60x60}
-	${goto 10}${voffset 50}${font}${color}$kernel on $machine
+	${goto 10}${voffset 30}${font}${color}$kernel on $machine
 	${goto 10}${exec cat /etc/issue.net}
 	${goto 10}${exec plasmashell --version}
 	${goto 10}CPU: ${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-27}
@@ -99,14 +99,14 @@ conky.text = [[
 	${goto 10}${font Fira Sans:bold:size=12}${color}Memory:
 	${goto 10}${font}${color}RAM${goto 55}$mem
 	${goto 10}System Ram:${goto 110}$memperc%  of${goto 160}$memmax
-	${goto 20}${top_mem name 1}${goto 130}${top_mem pid 1}${goto 175}${top_mem mem 1}%
-	${goto 20}${top_mem name 2}${goto 130}${top_mem pid 2}${goto 175}${top_mem mem 2}%
-	${goto 20}${top_mem name 3}${goto 130}${top_mem pid 3}${goto 175}${top_mem mem 3}%
-	${goto 20}${top_mem name 4}${goto 130}${top_mem pid 4}${goto 175}${top_mem mem 4}%
-	${goto 20}${top_mem name 5}${goto 130}${top_mem pid 5}${goto 175}${top_mem mem 5}%
-	${goto 20}${top_mem name 6}${goto 130}${top_mem pid 6}${goto 175}${top_mem mem 6}%
-	${goto 20}${top_mem name 7}${goto 130}${top_mem pid 7}${goto 175}${top_mem mem 7}%
-	${goto 20}${top_mem name 8}${goto 130}${top_mem pid 8}${goto 175}${top_mem mem 8}%
+	${goto 10}${color2}${top_mem name 1}${goto 135}${top_mem pid 1}${goto 175}${top_mem mem 1}%
+	${goto 10}${color2}${top_mem name 2}${goto 135}${top_mem pid 2}${goto 175}${top_mem mem 2}%
+	${goto 10}${color2}${top_mem name 3}${goto 135}${top_mem pid 3}${goto 175}${top_mem mem 3}%
+	${goto 10}${color2}${top_mem name 4}${goto 135}${top_mem pid 4}${goto 175}${top_mem mem 4}%
+	${goto 10}${color2}${top_mem name 5}${goto 135}${top_mem pid 5}${goto 175}${top_mem mem 5}%
+	${goto 10}${color2}${top_mem name 6}${goto 135}${top_mem pid 6}${goto 175}${top_mem mem 6}%
+	${goto 10}${color2}${top_mem name 7}${goto 135}${top_mem pid 7}${goto 175}${top_mem mem 7}%
+	${goto 10}${color2}${top_mem name 8}${goto 135}${top_mem pid 8}${goto 175}${top_mem mem 8}%
 	${goto 5}${color2}${hr 2}
 	${goto 10}${font Fira Sans:bold:size=12}${color}Disks:
 	${goto 10}${font}${color}Home ${goto 56}${fs_used /home}
@@ -136,5 +136,11 @@ conky.text = [[
 	${goto 50}${tcp_portmon 1 65535 rip  5}
 	${goto 50}${tcp_portmon 1 65535 rip  6}
 	${goto 50}${tcp_portmon 1 65535 rip  7}
-
+	${goto 5}${color2}${hr 2}
+	${goto 10}${font Fira Sans:bold:size=12}${color}GPU Load:
+	${goto 10}${font}${color}GPU ${color2}${goto 60}${nvidia gpuutil}%,
+	${goto 10}${font}${color}RAM ${color2}${goto 60}${nvidia membwutil}%
+	${goto 10}${font}${color}VIDEO ${color2}${goto 60}${nvidia videoutil}%
+	${goto 10}${font}${color}PCIe ${color2}${goto 60}${nvidia pcieutil}%
+	${goto 5}${color2}${hr 2}
 ]];
