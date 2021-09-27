@@ -74,15 +74,15 @@ conky.text = [[
 	${goto 10}${color}CPU4:${goto 65}${color5}${execi 30 sensors|grep 'Core 4'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C ${goto 125}${color}CPU5:${goto 180}${color5}${execi 30 sensors|grep 'Core 5'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C ${color2}
 	${goto 10}${color}CPU6:${goto 65}${color5}${execi 30 sensors|grep 'Core 6'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C ${goto 125}${color}CPU7:${goto 180}${color5}${execi 30 sensors|grep 'Core 7'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C ${color2}
 	${goto 5}${color2}${hr 2}
-	${goto 10}${font Fira Sans:bold:size=12}${color}CPU Load:
-	${goto 10}${font}${color}Core 1:${goto 65}${cpu cpu0}%
-	${goto 10}${color}Core 2:${goto 65}${cpu cpu1}%
-	${goto 10}${color}Core 3:${goto 65}${cpu cpu2}%
-	${goto 10}${color}Core 4:${goto 65}${cpu cpu3}%
-	${goto 10}${color}Core 5:${goto 65}${cpu cpu4}%
-	${goto 10}${color}Core 6:${goto 65}${cpu cpu5}%
-	${goto 10}${color}Core 7:${goto 65}${cpu cpu6}%
-	${goto 10}${color}Core 8:${goto 65}${cpu cpu7}%
+	${goto 10}${font Fira Sans:size=10:bold}${voffset 3}${color1}CPU LOAD
+	${goto 10}${font}${color}Core 1${goto 65}${cpu cpu0}%
+	${goto 10}${color}Core 2${goto 65}${cpu cpu1}%
+	${goto 10}${color}Core 3${goto 65}${cpu cpu2}%
+	${goto 10}${color}Core 4${goto 65}${cpu cpu3}%
+	${goto 10}${color}Core 5${goto 65}${cpu cpu4}%
+	${goto 10}${color}Core 6${goto 65}${cpu cpu5}%
+	${goto 10}${color}Core 7${goto 65}${cpu cpu6}%
+	${goto 10}${color}Core 8${goto 65}${cpu cpu7}%
 	${goto 5}${color2}${hr 2}
 	${goto 10}${top name 1}${goto 135}${top pid 1}${goto 175}${top cpu 1}%
 	${goto 10}${top name 2}${goto 135}${top pid 2}${goto 175}${top cpu 2}%
@@ -96,7 +96,7 @@ conky.text = [[
 	${goto 10}$processes${goto 55}Total Processes
 	${goto 10}$running_threads${goto 55}Running Threads
 	${goto 5}${color2}${hr 2}
-	${goto 10}${font Fira Sans:bold:size=12}${color}Memory:
+	${goto 10}${font Fira Sans:size=10:bold}${voffset 6}${color1}MEMORY
 	${goto 10}${font}${color}RAM${goto 55}$mem
 	${goto 10}System Ram:${goto 110}$memperc%  of${goto 160}$memmax
 	${goto 10}${color2}${top_mem name 1}${goto 135}${top_mem pid 1}${goto 175}${top_mem mem 1}%
@@ -108,7 +108,7 @@ conky.text = [[
 	${goto 10}${color2}${top_mem name 7}${goto 135}${top_mem pid 7}${goto 175}${top_mem mem 7}%
 	${goto 10}${color2}${top_mem name 8}${goto 135}${top_mem pid 8}${goto 175}${top_mem mem 8}%
 	${goto 5}${color2}${hr 2}
-	${goto 10}${font Fira Sans:bold:size=12}${color}Disks:
+	${goto 10}${font Fira Sans:size=10:bold}${voffset 6}${color1}DISKS
 	${goto 10}${font}${color}Home ${goto 56}${fs_used /home}
 	${goto 10}Dev ${goto 58}${fs_used /media/ssd1}
 	${goto 10}Data ${goto 58}${fs_used /media/local-data-2}
@@ -116,8 +116,9 @@ conky.text = [[
 	${goto 10}Data-F ${goto 58}${fs_used /media/data-f}
 	${goto 10}NAS-1 ${goto 58}${fs_used /media/nas-1}
 	${goto 10}NAS-2 ${goto 58}${fs_used /media/nas-2}
+	${goto 10}USB ${goto 58}${fs_used /media/usb-drive}
 	${goto 5}${color2}${hr 2}
-	${goto 10}${font Fira Sans:bold:size=12}${color}Network:
+	${goto 10}${font Fira Sans:size=10:bold}${voffset 4}${color1}NETWORK
 	${goto 10}${color}${font}Public:${goto 65}${execi 3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}
 	${goto 10}Lan:${goto 65}${addr bond0}
 	${goto 10}Down:${goto 65}${downspeedf bond0}
@@ -125,8 +126,8 @@ conky.text = [[
 	${goto 10}Total Down:${goto 95}${totaldown bond0}
 	${goto 10}Total Up:${goto 95}${totalup bond0}
 	${goto 5}${color2}${hr 2}
-	${goto 10}${font Fira Sans:bold:size=12}${color}Ports:
-	${goto 10}${font}Inbound Ports:${goto 125}${tcp_portmon 1 32767 count}
+	${goto 10}${font Fira Sans:size=10:bold}${voffset 6}${color1}PORTS
+	${goto 10}${font}${color2}Inbound Ports:${goto 125}${tcp_portmon 1 32767 count}
 	${goto 10}Outbound Ports:${goto 125}${tcp_portmon 32768 61000 count}
 	${goto 10}IP: ${goto 50}${tcp_portmon 1 65535 rip  0}
 	${goto 50}${tcp_portmon 1 65535 rip  1}
@@ -137,10 +138,10 @@ conky.text = [[
 	${goto 50}${tcp_portmon 1 65535 rip  6}
 	${goto 50}${tcp_portmon 1 65535 rip  7}
 	${goto 5}${color2}${hr 2}
-	${goto 10}${font Fira Sans:bold:size=12}${color}GPU Load:
-	${goto 10}${font}${color}GPU ${color2}${goto 60}${nvidia gpuutil}%,
-	${goto 10}${font}${color}RAM ${color2}${goto 60}${nvidia membwutil}%
-	${goto 10}${font}${color}VIDEO ${color2}${goto 60}${nvidia videoutil}%
-	${goto 10}${font}${color}PCIe ${color2}${goto 60}${nvidia pcieutil}%
+	${goto 10}${font Fira Sans:size=10:bold}${voffset 6}${color1}GPU
+	${goto 10}${font}${color}GPU ${color2}${goto 65}${nvidia gpuutil}%,
+	${goto 10}${font}${color}RAM ${color2}${goto 65}${nvidia membwutil}%
+	${goto 10}${font}${color}PCIe ${color2}${goto 65}${nvidia pcieutil}%
+	${goto 10}${font}${color}VIDEO ${color2}${goto 65}${nvidia videoutil}%
 	${goto 5}${color2}${hr 2}
 ]];
